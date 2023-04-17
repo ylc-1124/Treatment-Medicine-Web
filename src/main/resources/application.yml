@@ -5,7 +5,7 @@ spring:
   datasource:
     username: root
     password: 123
-    url: jdbc:mysql:///xdb
+    url: jdbc:mysql:///stsm_db
   redis:
     port: 6379
     host: localhost

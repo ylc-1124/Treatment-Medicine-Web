@@ -54,7 +54,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         wrapper.eq(User::getUsername, user.getUsername());
         User loginUser = baseMapper.selectOne(wrapper);
         //2.结果不为空，则登录成功
-        if (loginUser != null && passwordEncoder.matches(user.getPassword(), loginUser.getPassword())) {
+        if (loginUser != null && loginUser.getPassword().equals(user.getPassword())) {
             //生成 Token
             String token = jwtUtil.createToken(loginUser);
             //返回数据
@@ -62,6 +62,14 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
             data.put("token", token);
             return data;
         }
+//        if (loginUser != null && passwordEncoder.matches(user.getPassword(), loginUser.getPassword())) {
+//            //生成 Token
+//            String token = jwtUtil.createToken(loginUser);
+//            //返回数据
+//            Map<String, Object> data = new HashMap<>();
+//            data.put("token", token);
+//            return data;
+//        }
         return null;
     }
 

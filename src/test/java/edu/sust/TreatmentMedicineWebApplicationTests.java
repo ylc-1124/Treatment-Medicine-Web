@@ -1,5 +1,7 @@
 package edu.sust;
 
+import edu.sust.patient.entity.Patient;
+import edu.sust.patient.mapper.PatientMapper;
 import edu.sust.sys.entity.User;
 import edu.sust.sys.mapper.UserMapper;
 import org.junit.jupiter.api.Test;
@@ -10,10 +12,13 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @SpringBootTest
-class XAdminApplicationTests {
+class TreatmentMedicineWebApplicationTests {
 
     @Resource
     UserMapper userMapper;
+
+    @Resource
+    PatientMapper patientMapper;
 
     @Test
     void testMapper() {
@@ -21,6 +26,12 @@ class XAdminApplicationTests {
         for (User user : users) {
             System.out.println(user);
         }
+    }
+
+    @Test
+    void testPatientMapper() {
+        List<Patient> patients = patientMapper.selectList(null);
+        System.out.println(patients);
     }
 
 }

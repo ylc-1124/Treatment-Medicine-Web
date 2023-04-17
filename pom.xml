@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>edu.sust</groupId>
-    <artifactId>x-admin</artifactId>
+    <artifactId>Treatment-Medicine-Web</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>x-admin</name>
-    <description>x-admin</description>
+    <name>Treatment-Medicine-Web</name>
+    <description>Treatment-Medicine-Web</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>
@@ -60,13 +60,13 @@
             <version>2.0.7</version>
         </dependency>
 
-<!--        加密用的工具类,未引入全部的权限框架需要自己配置Bean-->
+        <!--加密用的工具类,未引入全部的权限框架需要自己配置Bean-->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-core</artifactId>
         </dependency>
 
-<!--        jwt-->
+        <!--jwt-->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt</artifactId>

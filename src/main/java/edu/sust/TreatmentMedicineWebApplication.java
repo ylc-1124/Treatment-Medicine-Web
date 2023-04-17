@@ -9,9 +9,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
 @MapperScan("edu.sust.*.mapper")
-public class XAdminApplication {
+public class TreatmentMedicineWebApplication {
     public static void main(String[] args) {
-        SpringApplication.run(XAdminApplication.class, args);
+        SpringApplication.run(TreatmentMedicineWebApplication.class, args);
     }
 
     //密码工具类

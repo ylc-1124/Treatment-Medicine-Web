@@ -11,15 +11,15 @@ import java.util.Collections;
  */
 public class CodeGenerator {
     public static void main(String[] args) {
-        String moduleName = "sys";
-        String mapperLocation = "C:\\Users\\85370\\IdeaProjects\\x-admin\\src\\main\\resources\\mapper\\" + moduleName;
-        String tables = "x_user,x_role,x_role_menu,x_menu,x_user_role";
-        FastAutoGenerator.create("jdbc:mysql:///xdb", "root", "123")
+        String moduleName = "patient";
+        String mapperLocation = "C:\\Users\\85370\\IdeaProjects\\Treatment-Medicine-Web\\src\\main\\resources\\mapper\\" + moduleName;
+        String tables = "x_patient";
+        FastAutoGenerator.create("jdbc:mysql:///stsm_db", "root", "123")
                 .globalConfig(builder -> {
                     builder.author("ylc") // 设置作者
                            // .enableSwagger() // 开启 swagger 模式
                             //.fileOverride() // 覆盖已生成文件
-                            .outputDir("C:\\Users\\85370\\IdeaProjects\\x-admin\\src\\main\\java"); // 指定输出目录
+                            .outputDir("C:\\Users\\85370\\IdeaProjects\\Treatment-Medicine-Web\\src\\main\\java"); // 指定输出目录
                 })
                 .packageConfig(builder -> {
                     builder.parent("edu.sust") // 设置父包名
