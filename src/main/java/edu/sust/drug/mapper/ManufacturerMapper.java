@@ -1,6 +1,6 @@
 package edu.sust.drug.mapper;
 
-import edu.sust.drug.entity.Manufactor;
+import edu.sust.drug.entity.Manufacturer;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author ylc
  * @since 2023-04-18
  */
-public interface ManufactorMapper extends BaseMapper<Manufactor> {
+public interface ManufacturerMapper extends BaseMapper<Manufacturer> {
 
 }

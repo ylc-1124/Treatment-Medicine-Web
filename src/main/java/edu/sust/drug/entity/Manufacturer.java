@@ -17,11 +17,11 @@ import java.io.Serializable;
  * @author ylc
  * @since 2023-04-18
  */
-@TableName("x_manufactor")
+@TableName("x_manufacturer")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Manufactor implements Serializable {
+public class Manufacturer implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
