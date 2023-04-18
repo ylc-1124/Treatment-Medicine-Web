@@ -48,6 +48,7 @@ public class PatientController {
         return Result.success(data);
     }
 
+    @ApiOperation("更新患者信息")
     @PutMapping("/update")
     public Result<?> updatePatient(@RequestBody Patient patient) {
         patient.setAccount(null); //不修改金额
@@ -55,6 +56,7 @@ public class PatientController {
         return Result.success("修改患者成功");
     }
 
+    @ApiOperation("根据患者ID获取患者信息")
     @GetMapping("/{id}")
     public Result<Patient> getPatientById(@PathVariable("id") Integer id) {
         Patient patient = patientService.getById(id);
