@@ -1,4 +1,4 @@
-package edu.sust.doctor.entity;
+package edu.sust.drug.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -18,32 +18,37 @@ import java.util.Date;
  * </p>
  *
  * @author ylc
- * @since 2023-04-18
+ * @since 2023-04-19
  */
-@TableName("x_doctor_certification")
+@TableName("x_prescription")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DoctorCertification implements Serializable {
+public class Prescription implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
-    private String applicantName;
+    private Integer patId;
+
     private Integer docId;
+
+    private Integer fyrId;
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    private Date fyDate;
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    private Date kjDate;
 
     private Integer status;
 
-    private String url;
+    private String lczd;
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
-    private Date createDate; //提交时间
+    private String bzxx;
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
-    private Date processDate; //处理时间
-
-    private Integer deleted = 0;
+    private Integer deleted;
 
 }
