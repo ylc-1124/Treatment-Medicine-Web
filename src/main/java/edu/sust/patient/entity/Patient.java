@@ -35,6 +35,8 @@ public class Patient implements Serializable {
 
     private String sex;
 
+    private String photo;
+
     private Integer age;
 
     private String address;

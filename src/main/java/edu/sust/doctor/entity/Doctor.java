@@ -48,6 +48,8 @@ public class Doctor implements Serializable {
     @TableField(exist = false)
     private String departmentName;
 
+    private String photo;
+
     private String introduction;
 
     private String speciality;

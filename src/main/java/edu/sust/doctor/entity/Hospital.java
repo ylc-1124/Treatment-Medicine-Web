@@ -31,8 +31,8 @@ public class Hospital implements Serializable {
     private String hospName;
 
     private String phone;
-
     private String address;
+    private String photo;
 
     private String introduction;
 

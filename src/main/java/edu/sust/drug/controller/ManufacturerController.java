@@ -5,17 +5,20 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import edu.sust.common.vo.Result;
 import edu.sust.drug.entity.Drug;
 import edu.sust.drug.entity.Manufacturer;
+import edu.sust.drug.entity.Product;
 import edu.sust.drug.service.IManufacturerService;
+import edu.sust.drug.service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author ylc
@@ -28,11 +31,19 @@ public class ManufacturerController {
     @Autowired
     private IManufacturerService manufacturerService;
 
+    @Autowired
+    private IProductService productService;
+
     @GetMapping("/list")
-    public Result<Map<String, Object>> getManuList(@RequestParam(value = "name", required = false) String name,
+    public Result<Map<String, Object>> getManuList(@RequestParam(value = "name", required = false) String name, //厂家名
+                                                   @RequestParam(value = "approvalNumber", required = false) String approvalNumber, //国字准号
                                                    @RequestParam("pageNo") Long pageNo,
                                                    @RequestParam("pageSize") Long pageSize) {
         LambdaQueryWrapper<Manufacturer> wrapper = new LambdaQueryWrapper<>();
+        Product product = productService.getProductByApprovalNumber(approvalNumber);
+        if (product != null) {
+            wrapper.eq(Manufacturer::getId, product.getManuId());
+        }
         wrapper.eq(StringUtils.hasLength(name), Manufacturer::getName, name);
         wrapper.orderByDesc(Manufacturer::getId);
         Page<Manufacturer> page = new Page<>(pageNo, pageSize);

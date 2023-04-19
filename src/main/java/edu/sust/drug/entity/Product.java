@@ -39,7 +39,7 @@ public class Product implements Serializable {
 
     private String specs;
 
-    private String picture;
+    private String photo;
 
     private BigDecimal price;
 

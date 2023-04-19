@@ -16,7 +16,7 @@ import java.util.Map;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author ylc
@@ -31,10 +31,15 @@ public class DrugController {
 
     @GetMapping("/list")
     public Result<Map<String, Object>> getDrugList(@RequestParam(value = "genericName", required = false) String genericName,
+                                                   @RequestParam(value = "classification", required = false)
+                                                   Integer classification, //0-非处方药 1-处方药
                                                    @RequestParam("pageNo") Long pageNo,
                                                    @RequestParam("pageSize") Long pageSize) {
         LambdaQueryWrapper<Drug> wrapper = new LambdaQueryWrapper<>();
         wrapper.eq(StringUtils.hasLength(genericName), Drug::getGenericName, genericName);
+        if (classification != null) {
+            wrapper.eq(Drug::getClassification, classification);
+        }
         wrapper.orderByDesc(Drug::getId);
         Page<Drug> page = new Page<>(pageNo, pageSize);
         //进行条件分页查询,结果在page对象中
