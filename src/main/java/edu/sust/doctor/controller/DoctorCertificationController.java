@@ -7,6 +7,7 @@ import edu.sust.doctor.entity.Doctor;
 import edu.sust.doctor.entity.DoctorCertification;
 import edu.sust.doctor.service.IDoctorCertificationService;
 import edu.sust.patient.entity.Patient;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -49,18 +50,10 @@ public class DoctorCertificationController {
         return Result.success(data);
     }
 
-    @GetMapping("/updateStatus")
-    public Result<?> updateStatus(@RequestParam Integer id ,
-                                  @RequestParam Integer status) {
-        DoctorCertification certi = certificationService.getById(id);
-        if (certi != null) {
-            certi.setStatus(status);
-            certi.setProcessDate(new Date());
-            certificationService.updateById(certi);
-            //修改状态=通过，则给医生正式授权
-
-            return Result.success("修改状态成功");
-        }
-        return Result.fail("修改状态失败");
+    @ApiOperation("修改资质证明的状态")
+    @PutMapping("/updateStatus")
+    public Result<?> updateStatus(@RequestBody DoctorCertification certi) {
+        certificationService.updateById(certi);
+        return Result.success("修改状态成功");
     }
 }
