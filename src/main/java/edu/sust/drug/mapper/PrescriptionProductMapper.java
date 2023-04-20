@@ -1,6 +1,6 @@
 package edu.sust.drug.mapper;
 
-import edu.sust.drug.entity.PrescriptionDrug;
+import edu.sust.drug.entity.PrescriptionProduct;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author ylc
  * @since 2023-04-19
  */
-public interface PrescriptionDrugMapper extends BaseMapper<PrescriptionDrug> {
+public interface PrescriptionProductMapper extends BaseMapper<PrescriptionProduct> {
 
 }

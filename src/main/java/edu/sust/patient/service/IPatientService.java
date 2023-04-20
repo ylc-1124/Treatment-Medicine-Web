@@ -13,4 +13,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IPatientService extends IService<Patient> {
 
+    Patient getPatientByUserId(Integer id);
 }

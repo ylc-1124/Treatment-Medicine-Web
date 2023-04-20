@@ -1,6 +1,6 @@
 package edu.sust.drug.service;
 
-import edu.sust.drug.entity.PrescriptionDrug;
+import edu.sust.drug.entity.PrescriptionProduct;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author ylc
  * @since 2023-04-19
  */
-public interface IPrescriptionDrugService extends IService<PrescriptionDrug> {
+public interface IPrescriptionProductService extends IService<PrescriptionProduct> {
 
 }
