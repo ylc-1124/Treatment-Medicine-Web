@@ -11,9 +11,9 @@ import java.util.Collections;
  */
 public class CodeGenerator {
     public static void main(String[] args) {
-        String moduleName = "drug";
+        String moduleName = "onlineConsult";
         String mapperLocation = "C:\\Users\\85370\\IdeaProjects\\Treatment-Medicine-Web\\src\\main\\resources\\mapper\\" + moduleName;
-        String tables = "x_prescription,x_prescription_drug";
+        String tables = "x_consultation";
         FastAutoGenerator.create("jdbc:mysql:///stsm_db", "root", "123")
                 .globalConfig(builder -> {
                     builder.author("ylc") // 设置作者

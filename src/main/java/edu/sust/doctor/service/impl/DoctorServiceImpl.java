@@ -50,4 +50,11 @@ public class DoctorServiceImpl extends ServiceImpl<DoctorMapper, Doctor> impleme
         data.put("total", page.getTotal());
         return data;
     }
+
+    @Override
+    public Doctor getDoctorByUserId(Integer userId) {
+        LambdaQueryWrapper<Doctor> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(Doctor::getUserId, userId);
+        return this.baseMapper.selectOne(wrapper);
+    }
 }
