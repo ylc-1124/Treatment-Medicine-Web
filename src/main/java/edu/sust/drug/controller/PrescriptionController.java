@@ -86,9 +86,16 @@ public class PrescriptionController {
     }
 
     @ApiOperation("修改处方状态为已完成")
-    @PutMapping("/updateStatus")
-    public Result<?> updateStatus(@RequestBody Prescription pres) {
+    @PutMapping("/update")
+    public Result<?> updatePres(@RequestBody Prescription pres) {
         prescriptionService.updateById(pres);
-        return Result.success("修改状态成功");
+        return Result.success("修改处方成功");
+    }
+
+    @ApiOperation("处方开具")
+    @PostMapping("/add")
+    public Result<Integer> addPres(@RequestBody Prescription pres) {
+        prescriptionService.savePres(pres);
+        return Result.success(pres.getId(), "处方开具成功");
     }
 }

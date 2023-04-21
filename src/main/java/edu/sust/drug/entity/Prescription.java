@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 
 /**
  * <p>
@@ -32,9 +33,15 @@ public class Prescription implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
+    @TableField(exist = false)
+    private Integer consultId;  //问诊记录的ID
+
     private Integer patId;
 
     private Integer docId;
+
+    @TableField(exist = false)
+    private List<Product> productList;
 
     @TableField(exist = false)
     private String docName;
@@ -53,6 +60,6 @@ public class Prescription implements Serializable {
 
     private String bzxx;
 
-    private Integer deleted;
+    private Integer deleted = 0;
 
 }
