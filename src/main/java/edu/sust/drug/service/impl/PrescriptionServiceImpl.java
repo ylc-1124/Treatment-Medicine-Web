@@ -40,9 +40,12 @@ public class PrescriptionServiceImpl extends ServiceImpl<PrescriptionMapper, Pre
         pres.setKjDate(new Date());
         pres.setStatus(0); //设置为未完成状态
         this.baseMapper.insert(pres);
-        //2、给问诊记录注入处方ID
+
+        //2、更新问诊记录中的处方ID
         ConsultRecord consultRecord = consultRecordService.getById(pres.getConsultId());
         consultRecord.setPresId(pres.getId());
+        consultRecordService.updateById(consultRecord);
+
         //3、维护中间表
         List<Product> productList = pres.getProductList();
         for (Product product : productList) {

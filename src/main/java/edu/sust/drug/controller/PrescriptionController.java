@@ -94,8 +94,8 @@ public class PrescriptionController {
 
     @ApiOperation("处方开具")
     @PostMapping("/add")
-    public Result<Integer> addPres(@RequestBody Prescription pres) {
+    public Result<?> addPres(@RequestBody Prescription pres) {
         prescriptionService.savePres(pres);
-        return Result.success(pres.getId(), "处方开具成功");
+        return Result.success("处方开具成功");
     }
 }
