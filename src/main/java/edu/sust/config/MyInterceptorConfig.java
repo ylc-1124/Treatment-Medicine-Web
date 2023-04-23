@@ -22,7 +22,8 @@ public class MyInterceptorConfig implements WebMvcConfigurer {
                         "/error",
                         "/swagger-ui/**",
                         "/swagger-resources/**",
-                        "/v3/**"
+                        "/v3/**",
+                        "/oss/fileUpload"
                 );
     }
 }
