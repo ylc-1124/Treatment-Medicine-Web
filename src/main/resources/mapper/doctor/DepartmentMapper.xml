@@ -5,4 +5,8 @@
     <select id="selectNameById" resultType="java.lang.String">
         SELECT dep_name FROM x_department WHERE id = #{departMentId}
     </select>
+    <select id="selectDepartmentListByHospId" resultType="edu.sust.doctor.entity.Department">
+        SELECT d.id , d.dep_name FROM x_department d ,x_hosp_dep hd
+        WHERE d.id = hd.dep_id AND hd.hosp_id = #{hospId}
+    </select>
 </mapper>

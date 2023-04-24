@@ -1,5 +1,6 @@
 package edu.sust.doctor.service;
 
+import edu.sust.common.vo.DoctorRegister;
 import edu.sust.doctor.entity.Doctor;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -18,4 +19,6 @@ public interface IDoctorService extends IService<Doctor> {
     Map<String, Object> getDoctorList(String doctorName, Long pageNo, Long pageSize);
 
     Doctor getDoctorByUserId(Integer userID);
+
+    void register(DoctorRegister doctorRegister);
 }

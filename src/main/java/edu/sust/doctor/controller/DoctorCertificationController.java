@@ -53,7 +53,7 @@ public class DoctorCertificationController {
     @ApiOperation("修改资质证明的状态")
     @PutMapping("/updateStatus")
     public Result<?> updateStatus(@RequestBody DoctorCertification certi) {
-        certificationService.updateById(certi);
+        certificationService.updateCerti(certi);
         return Result.success("修改状态成功");
     }
 }

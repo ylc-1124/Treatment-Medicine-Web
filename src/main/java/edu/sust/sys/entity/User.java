@@ -27,9 +27,9 @@ public class User implements Serializable {
     private String password;
     private String email;
     private String phone;
-    private Integer status;
+    private Integer status = 0;
     private String avatar;
-    private Integer deleted;
+    private Integer deleted = 0;
 
     @TableField(exist = false)
     private List<Integer> roleIdList;

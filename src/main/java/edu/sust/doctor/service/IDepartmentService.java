@@ -1,7 +1,10 @@
 package edu.sust.doctor.service;
 
+import edu.sust.common.vo.Option;
 import edu.sust.doctor.entity.Department;
 import com.baomidou.mybatisplus.extension.service.IService;
+
+import java.util.List;
 
 /**
  * <p>
@@ -14,4 +17,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface IDepartmentService extends IService<Department> {
 
     String getDepartMentById(Integer departmentId);
+
+    List<Option<Integer>> getDepartmentOptionsListByHospId(Integer hospId);
 }

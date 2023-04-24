@@ -2,10 +2,12 @@ package edu.sust.doctor.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import edu.sust.common.vo.DoctorRegister;
 import edu.sust.common.vo.Result;
 import edu.sust.doctor.entity.Doctor;
 import edu.sust.doctor.service.IDoctorService;
 import edu.sust.patient.entity.Patient;
+import edu.sust.sys.entity.User;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
@@ -30,6 +32,12 @@ public class DoctorController {
     @Autowired
     private IDoctorService doctorService;
 
+    @ApiOperation("医生注册")
+    @PostMapping("/register")
+    public Result<?> registerDoctor(@RequestBody DoctorRegister doctorRegister) {
+        doctorService.register(doctorRegister);
+        return Result.success("注册成功，等待审核...");
+    }
     @ApiOperation("分页条件查询医生列表")
     @GetMapping("/list")
     public Result<Map<String, Object>> getDoctorList(@RequestParam(value = "doctorName", required = false) String doctorName,

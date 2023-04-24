@@ -3,6 +3,8 @@ package edu.sust.doctor.mapper;
 import edu.sust.doctor.entity.Department;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
+import java.util.List;
+
 /**
  * <p>
  *  Mapper 接口
@@ -14,4 +16,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 public interface DepartmentMapper extends BaseMapper<Department> {
 
     String selectNameById(Integer departmentId);
+
+    List<Department> selectDepartmentListByHospId(Integer hospId);
 }
