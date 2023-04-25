@@ -41,4 +41,9 @@ public class DepartmentServiceImpl extends ServiceImpl<DepartmentMapper, Departm
         }
         return optionList;
     }
+
+    @Override
+    public List<Department> getDepartmentListByHospId(Integer hospId) {
+        return this.baseMapper.selectDepartmentListByHospId(hospId);
+    }
 }

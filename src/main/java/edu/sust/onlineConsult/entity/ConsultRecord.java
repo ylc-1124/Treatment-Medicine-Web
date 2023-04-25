@@ -55,5 +55,5 @@ public class ConsultRecord implements Serializable {
 
     private String jjly;
 
-    private Integer deleted;
+    private Integer deleted = 0;
 }

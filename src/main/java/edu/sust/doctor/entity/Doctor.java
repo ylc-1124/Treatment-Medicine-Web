@@ -52,6 +52,8 @@ public class Doctor implements Serializable {
 
     private String introduction;
 
+    private BigDecimal wzPrice;
+
     private String speciality;
 
     private BigDecimal income;
@@ -59,6 +61,12 @@ public class Doctor implements Serializable {
     private String certification;
 
     private Integer deleted = 0;
+
+    private String zc;
+
+    private String hjry;
+
+    private String kycg;
 
 
 }

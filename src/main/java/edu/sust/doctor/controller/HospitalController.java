@@ -19,7 +19,7 @@ import java.util.Map;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author ylc
@@ -33,13 +33,20 @@ public class HospitalController {
     private IHospitalService hospitalService;
 
     @GetMapping("/list")
-    public Result<Map<String, Object>> getHospitalList(@RequestParam("hospName") String hospName,
-                                                    @RequestParam("pageNo") Long pageNo,
-                                                    @RequestParam("pageSize") Long pageSize) {
+    public Result<Map<String, Object>> getHospitalList(@RequestParam(value = "hospName", required = false) String hospName,
+                                                       @RequestParam("pageNo") Long pageNo,
+                                                       @RequestParam("pageSize") Long pageSize) {
         LambdaQueryWrapper<Hospital> wrapper = new LambdaQueryWrapper<>();
         wrapper.like(StringUtils.hasLength(hospName), Hospital::getHospName, hospName);
         Page<Hospital> page = new Page<>(pageNo, pageSize);
         hospitalService.page(page, wrapper);
+        //分隔出头衔
+        for (Hospital hospital : page.getRecords()) {
+            if (hospital.getTag() != null) {
+                String[] tags = hospital.getTag().split(";");
+                hospital.setTags(tags);
+            }
+        }
         Map<String, Object> data = new HashMap<>();
         data.put("rows", page.getRecords());
         data.put("total", page.getTotal());

@@ -1,6 +1,7 @@
 package edu.sust.doctor.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
@@ -33,6 +34,11 @@ public class Hospital implements Serializable {
     private String phone;
     private String address;
     private String photo;
+
+    private String tag; //医院头衔标签  用 ；进行分格
+
+    @TableField(exist = false)
+    private String[] tags;
 
     private String introduction;
 

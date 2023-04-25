@@ -19,4 +19,6 @@ public interface IDepartmentService extends IService<Department> {
     String getDepartMentById(Integer departmentId);
 
     List<Option<Integer>> getDepartmentOptionsListByHospId(Integer hospId);
+
+    List<Department> getDepartmentListByHospId(Integer hospId);
 }

@@ -16,7 +16,7 @@ import java.util.Map;
  */
 public interface IDoctorService extends IService<Doctor> {
 
-    Map<String, Object> getDoctorList(String doctorName, Long pageNo, Long pageSize);
+    Map<String, Object> getDoctorList(String doctorName,Integer depId,Integer hospId, Long pageNo, Long pageSize);
 
     Doctor getDoctorByUserId(Integer userID);
 

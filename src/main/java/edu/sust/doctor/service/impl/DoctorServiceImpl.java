@@ -47,9 +47,15 @@ public class DoctorServiceImpl extends ServiceImpl<DoctorMapper, Doctor> impleme
     private IDoctorCertificationService certificationService;
 
     @Override
-    public Map<String, Object> getDoctorList(String doctorName, Long pageNo, Long pageSize) {
+    public Map<String, Object> getDoctorList(String doctorName, Integer depId,Integer hospId,Long pageNo, Long pageSize) {
         LambdaQueryWrapper<Doctor> wrapper = new LambdaQueryWrapper<>();
         wrapper.eq(StringUtils.hasLength(doctorName), Doctor::getDoctorName, doctorName);
+        if (depId != null) {
+            wrapper.eq(Doctor::getDepartmentId, depId);
+        }
+        if (hospId != null) {
+            wrapper.eq(Doctor::getHospId, hospId);
+        }
         wrapper.orderByDesc(Doctor::getId);
         Page<Doctor> page = new Page<>(pageNo, pageSize);
         this.baseMapper.selectPage(page, wrapper);

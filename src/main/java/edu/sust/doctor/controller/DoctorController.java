@@ -41,9 +41,11 @@ public class DoctorController {
     @ApiOperation("分页条件查询医生列表")
     @GetMapping("/list")
     public Result<Map<String, Object>> getDoctorList(@RequestParam(value = "doctorName", required = false) String doctorName,
+                                                     @RequestParam(value = "depId",required = false) Integer depId,
+                                                     @RequestParam(value = "hospId",required = false) Integer hospId,
                                                      @RequestParam("pageNo") Long pageNo,
                                                      @RequestParam("pageSize") Long pageSize) {
-        Map<String, Object> data = doctorService.getDoctorList(doctorName, pageNo, pageSize);
+        Map<String, Object> data = doctorService.getDoctorList(doctorName,depId,hospId, pageNo, pageSize);
         return Result.success(data);
     }
 

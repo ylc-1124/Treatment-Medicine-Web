@@ -10,6 +10,7 @@ import edu.sust.doctor.service.IDoctorService;
 import edu.sust.onlineConsult.entity.ConsultRecord;
 import edu.sust.onlineConsult.service.IConsultRecordService;
 import edu.sust.patient.entity.Patient;
+import edu.sust.patient.service.IPatientService;
 import edu.sust.sys.entity.User;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ import java.util.Map;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author ylc
@@ -37,6 +38,9 @@ public class ConsultRecordController {
 
     @Autowired
     private IDoctorService doctorService;
+
+    @Autowired
+    private IPatientService patientService;
 
     @Autowired
     private JwtUtil jwtUtil;
@@ -55,7 +59,7 @@ public class ConsultRecordController {
         if (doctor == null) {
             return Result.fail("无权限");
         }
-        Map<String, Object> data = consultRecordService.getConsultRecordListByDocId(doctor.getId(),patientName, status, pageNo, pageSize);
+        Map<String, Object> data = consultRecordService.getConsultRecordListByDocId(doctor.getId(), patientName, status, pageNo, pageSize);
         return Result.success(data);
     }
 
@@ -65,5 +69,24 @@ public class ConsultRecordController {
         conRec.setProcessDate(new Date());
         consultRecordService.updateById(conRec);
         return Result.success("修改记录成功");
+    }
+
+    @PostMapping("/add")
+    public Result<?> addConsultRecord(@RequestBody ConsultRecord conRec,
+                                      @RequestHeader("X-Token") String token) {
+        User user = jwtUtil.parseToken(token, User.class);
+        LambdaQueryWrapper<Patient> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(Patient::getUserId, user.getId());
+        Patient patient = patientService.getOne(wrapper);
+        if (patient == null) {
+            return Result.fail("无权限");
+        }
+        //注入初始信息
+        conRec.setPatId(patient.getId());
+        conRec.setPatName(patient.getPatientName());
+        conRec.setStatus(0);
+        conRec.setCreateDate(new Date());
+        consultRecordService.save(conRec);
+        return Result.success("问诊请求已发送，等待医生回复...");
     }
 }
