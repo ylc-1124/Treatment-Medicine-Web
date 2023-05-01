@@ -26,7 +26,9 @@ public class MyInterceptorConfig implements WebMvcConfigurer {
                         "/oss/fileUpload",
                         "/hospital/list",
                         "/department/options",
-                        "/doctor/register"
+                        "/doctor/register",
+                        "/imserver/**",
+                        "/alipay/**"
                 );
     }
 }

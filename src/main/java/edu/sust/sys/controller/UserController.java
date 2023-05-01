@@ -35,6 +35,18 @@ public class UserController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @GetMapping("/getUsernameByDocId")
+    public Result<String> getUsernameByDocId(@RequestParam("docId") Integer docId) {
+        String username = userService.getUsernameByDocId(docId);
+        return Result.success(username, "获取成功");
+    }
+
+    @GetMapping("/getUsernameByPatId")
+    public Result<String> getUsernameByPatId(@RequestParam("patId") Integer patId) {
+        String username = userService.getUsernameByPatId(patId);
+        return Result.success(username, "获取成功");
+    }
+
     @GetMapping("/all")
     public Result<List<User>> getAllUser() {
         List<User> list = userService.list();

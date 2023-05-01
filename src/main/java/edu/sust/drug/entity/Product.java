@@ -1,6 +1,7 @@
 package edu.sust.drug.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
@@ -51,5 +52,12 @@ public class Product implements Serializable {
 
     private Integer periodValidity;
 
+    private Integer pcId;
+
+    @TableField(exist = false)
+    private Manufacturer manufacturer; //生产厂家
+
+    @TableField(exist = false)
+    private Drug drug; //对应的药品
 
 }

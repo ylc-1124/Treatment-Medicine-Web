@@ -53,8 +53,8 @@ public class MySwaggerConfig {
     //生成swagger文档中的一些信息
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("神盾局特工管理系统接口文档")
-                .description("全网最简单的SpringBoot+Vue前后端分离项目实战")
+                .title("在线寻医问药网站接口文档")
+                .description("毕业设计 at SUST")
                 .version("1.0")
                 .contact(new Contact("ylc", "http://www.swaggerylc.cn", "853703920@qq.com"))
                 .build();

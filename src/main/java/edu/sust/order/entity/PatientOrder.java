@@ -1,4 +1,4 @@
-package edu.sust.onlineConsult.entity;
+package edu.sust.order.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -10,6 +10,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -19,13 +20,13 @@ import java.util.Date;
  * </p>
  *
  * @author ylc
- * @since 2023-04-21
+ * @since 2023-04-29
  */
-@TableName("x_consult_record")
+@TableName("x_patient_order")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ConsultRecord implements Serializable {
+public class PatientOrder implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -34,28 +35,28 @@ public class ConsultRecord implements Serializable {
 
     private Integer patId;
 
-    private String patName;
-
-    private Integer docId;
-
-    private String docName;
-
     private Integer presId;
 
-    private String bqjs;
+    private String orderNo;
 
-    private String jczl;
+    private String subject; //订单名称
 
-    private Integer status;
+    private String alipayNo;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date createDate;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
-    private Date processDate;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
-    private Date consultDate;
 
-    private String jjly;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    private Date payDate;
 
-    private Integer deleted = 0;
+    private Integer addressId;
+
+    @TableField(exist = false)
+    private DeliveryAddress address;
+
+    private Integer status;
+
+    private BigDecimal totalAmount;
+
+    private Integer deleted;
 }

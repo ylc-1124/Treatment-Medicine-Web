@@ -63,10 +63,35 @@ public class ConsultRecordController {
         return Result.success(data);
     }
 
+    @ApiOperation("分页条件查询当前患者发送的不同状态的问诊请求")
+    @GetMapping("/list2")
+    public Result<Map<String, Object>> getConsultRecordListForPat(@RequestParam(value = "docName", required = false) String docName,
+                                                                  @RequestParam("status") Integer status,
+                                                                  @RequestParam("pageNo") Long pageNo,
+                                                                  @RequestParam("pageSize") Long pageSize,
+                                                                  @RequestHeader("X-Token") String token) {
+        //获取当前用户的医生ID
+        User loginUser = jwtUtil.parseToken(token, User.class);
+        //获取用户ID获取对应的患者对象
+        LambdaQueryWrapper<Patient> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(Patient::getUserId, loginUser.getId());
+        Patient patient = patientService.getOne(wrapper);
+        if (patient == null) {
+            return Result.fail("无权限");
+        }
+        Map<String, Object> data = consultRecordService.getConsultRecordListByPatId(patient.getId(), docName, status, pageNo, pageSize);
+        return Result.success(data);
+    }
+
+
     @ApiOperation("修改问诊记录")
     @PutMapping("/update")
     public Result<?> updateConsultRecord(@RequestBody ConsultRecord conRec) {
-        conRec.setProcessDate(new Date());
+        if (conRec.getStatus() == 1) {
+            conRec.setProcessDate(new Date());
+        } else if (conRec.getStatus() == 2) {
+            conRec.setConsultDate(new Date());
+        }
         consultRecordService.updateById(conRec);
         return Result.success("修改记录成功");
     }
@@ -75,6 +100,7 @@ public class ConsultRecordController {
     public Result<?> addConsultRecord(@RequestBody ConsultRecord conRec,
                                       @RequestHeader("X-Token") String token) {
         User user = jwtUtil.parseToken(token, User.class);
+        //病人创建问诊记录
         LambdaQueryWrapper<Patient> wrapper = new LambdaQueryWrapper<>();
         wrapper.eq(Patient::getUserId, user.getId());
         Patient patient = patientService.getOne(wrapper);
@@ -87,6 +113,6 @@ public class ConsultRecordController {
         conRec.setStatus(0);
         conRec.setCreateDate(new Date());
         consultRecordService.save(conRec);
-        return Result.success("问诊请求已发送，等待医生回复...");
+        return Result.success("问诊请求已发送，等待医生处理");
     }
 }

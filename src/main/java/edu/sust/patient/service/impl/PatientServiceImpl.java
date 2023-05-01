@@ -25,4 +25,9 @@ public class PatientServiceImpl extends ServiceImpl<PatientMapper, Patient> impl
         wrapper.eq(Patient::getUserId, id);
         return this.baseMapper.selectOne(wrapper);
     }
+
+    @Override
+    public Integer getPatIdByUserId(Integer id) {
+        return this.baseMapper.selectPatIdByUserId(id);
+    }
 }

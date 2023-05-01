@@ -28,4 +28,9 @@ public interface IUserService extends IService<User> {
     void updateUser(User user);
 
     void deleteUser(Integer id);
+
+
+    String getUsernameByDocId(Integer docId);
+
+    String getUsernameByPatId(Integer patId);
 }

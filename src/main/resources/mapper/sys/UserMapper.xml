@@ -6,4 +6,12 @@
         SELECT role_name FROM x_user_role a , x_role b
         WHERE a.role_id = b.role_id and a.user_id = #{userId}
     </select>
+    <select id="selectByDocId" resultType="edu.sust.sys.entity.User">
+        SELECT u.* FROM x_doctor d , x_user u
+        WHERE d.user_id = u.id and d.id = #{docId}
+    </select>
+    <select id="selectByPatId" resultType="edu.sust.sys.entity.User">
+        SELECT u.* FROM x_patient p , x_user u
+        WHERE p.user_id = u.id and p.id = #{patId}
+    </select>
 </mapper>

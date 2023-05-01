@@ -43,4 +43,24 @@ public class ConsultRecordServiceImpl extends ServiceImpl<ConsultRecordMapper, C
         data.put("total", page.getTotal());
         return data;
     }
+
+    @Override
+    public Map<String, Object> getConsultRecordListByPatId(Integer patId,
+                                                           String docName,
+                                                           Integer status,
+                                                           Long pageNo,
+                                                           Long pageSize) {
+        LambdaQueryWrapper<ConsultRecord> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(ConsultRecord::getPatId, patId);
+        wrapper.eq(StringUtils.hasLength(docName), ConsultRecord::getDocName, docName);
+        wrapper.eq(ConsultRecord::getStatus, status);
+        wrapper.orderByDesc(ConsultRecord::getId);
+        Page<ConsultRecord> page = new Page<>(pageNo, pageSize);
+        //进行条件分页查询,结果在page对象中
+        this.baseMapper.selectPage(page, wrapper);
+        Map<String, Object> data = new HashMap<>();
+        data.put("rows", page.getRecords());
+        data.put("total", page.getTotal());
+        return data;
+    }
 }

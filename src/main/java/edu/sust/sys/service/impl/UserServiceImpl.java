@@ -160,4 +160,24 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         wrapper.eq(UserRole::getUserId, id);
         userRoleMapper.delete(wrapper);
     }
+
+    @Override
+    public String getUsernameByDocId(Integer docId) {
+        User user = this.baseMapper.selectByDocId(docId);
+        if (user == null) {
+            return null;
+        }
+        return user.getUsername();
+    }
+
+    @Override
+    public String getUsernameByPatId(Integer patId) {
+        User user = this.baseMapper.selectByPatId(patId);
+        if (user == null) {
+            return null;
+        }
+        return user.getUsername();
+    }
+
+
 }

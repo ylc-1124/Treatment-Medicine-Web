@@ -15,4 +15,8 @@ import java.util.List;
  */
 public interface UserMapper extends BaseMapper<User> {
     List<String> getRoleNameByUserId(Integer userId);
+
+    User selectByDocId(Integer docId);
+
+    User selectByPatId(Integer patId);
 }

@@ -16,4 +16,6 @@ import java.util.Map;
 public interface IConsultRecordService extends IService<ConsultRecord> {
 
     Map<String, Object> getConsultRecordListByDocId(Integer docId, String patientName, Integer status, Long pageNo, Long pageSize);
+
+    Map<String, Object> getConsultRecordListByPatId(Integer patId, String docName, Integer status, Long pageNo, Long pageSize);
 }
