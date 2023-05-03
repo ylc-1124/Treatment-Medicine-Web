@@ -11,4 +11,5 @@ public class AliPay {
     private double totalAmount;  //总金额
     private String subject;  //订单名称
     private String alipayTraceNo;  //支付宝生成的订单号
+
 }

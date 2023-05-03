@@ -34,4 +34,4 @@ alipay:
   #支付宝公钥
   alipayPublicKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAiAg7xaSn1AxqrGAmbMwebGytVd3dLmMHjD58zjNJ7YOiA2KNYjGqzw5Nm1h7aASnWTHkc1s3axtbKi49fM/Yc8e8EyCq+MSUbD/LA72/0+S5cZ/1FsOV/k59F+7vcSwg3BM7S9sREpwYSjJBtQFjrmRQb+b0pq+tLQdolm8AFQjqUYv+PWYsR+O1EC67hVo9kDkCtwTRCyTxcwMDxjvWZcQAAGzu4ickxUMQWcFNzpwdS4sXAao3EB9mgB+bnK64chp5+wNrmaHy1NnMtbKNwUyo0ktj5/kJYQvZGvtGmTWEP3JrMCrbYjZT3UdnRpnZbAfTPkSd6dWZeEvlDucGdQIDAQAB
   #支付成功的回调，更新订单的状态
-  notifyUrl: http://wx73es.natappfree.cc/alipay/notify
+  notifyUrl:  http://vjuuhw.natappfree.cc/alipay/notify
